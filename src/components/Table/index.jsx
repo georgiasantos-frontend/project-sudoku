@@ -17,7 +17,7 @@ export const Table = ({ sudokuArr, setSudokuArr, initalArr }) => {
   };
   return (
     <TableContainer>
-      <Tbody>
+      <tbody>
         {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((row, rIndex) => {
           return (
             <tr
@@ -45,7 +45,7 @@ export const Table = ({ sudokuArr, setSudokuArr, initalArr }) => {
             </tr>
           );
         })}
-      </Tbody>
+      </tbody>
     </TableContainer>
   );
 };

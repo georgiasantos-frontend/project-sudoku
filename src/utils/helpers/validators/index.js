@@ -19,6 +19,9 @@ export const solver = (grid, row = 0, col = 0) => {
       if (solver(grid, newRow, newCol)) return true;
     }
   }
+
+  grid[row][col] = -1;
+  return false;
 };
 
 //se a coluna atingir o 8, vai aumentar o  numero de linhas
@@ -33,18 +36,21 @@ const checkValid = (grid, row, col, num) => {
   if (
     checkRow(grid, row, num) &&
     checkCol(grid, col, num) &&
-    checlBox(grid, col, row, num)
+    checkBox(grid, row, col, num)
   )
     return true;
+
   return false;
 };
 
 const checkRow = (grid, row, num) => {
+  //verifica se o número é unico na linha
   return grid[row].indexOf(num) === -1;
 };
 
 const checkCol = (grid, col, num) => {
-  return grid.map((row) => row[col]).indexOf(num === -1);
+  //verifi a se o numero é unico na coluna
+  return grid.map((row) => row[col]).indexOf(num) === -1;
 };
 
 const checkBox = (grid, row, col, num) => {

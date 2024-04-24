@@ -1,4 +1,4 @@
-import { Container, ButtonContainer, CheckButton } from "./styles";
+import { Container, ButtonContainer, Button } from "./styles";
 
 import { Table } from "../../components/Table";
 import { useState } from "react";
@@ -21,7 +21,7 @@ export const Home = () => {
   const [sudokuArr, setSudokuArr] = useState(initial);
 
   const checkSudoku = () => {
-    const sudoku = getDeepCopy(initial);
+    let sudoku = getDeepCopy(initial);
     solver(sudoku);
     let compare = compareSudokus(sudokuArr, sudoku);
 
@@ -31,6 +31,18 @@ export const Home = () => {
     return alert("Sudoku não foi resolvido. Tente novamente");
   };
 
+  //resolver o sudoku
+  const SolveSudoku = () => {
+    let sudoku = getDeepCopy(initial);
+    solver(sudoku);
+    setSudokuArr(sudoku);
+  };
+
+  //reiniciar o nosso sudoku
+  const ResetSudoku = () => {
+    let sudoku = getDeepCopy(initial);
+    setSudokuArr(sudoku);
+  };
   return (
     <Container>
       <p>DevClub Sudoku Game</p>
@@ -40,7 +52,9 @@ export const Home = () => {
         initalArr={initial}
       />
       <ButtonContainer>
-        <CheckButton onclick={checkSudoku}>Checar</CheckButton>
+        <Button onclick={checkSudoku}>Checar</Button>
+        <Button onclick={SolveSudoku}>Resolver</Button>
+        <Button onclick={ResetSudoku}>Reiniciar</Button>
       </ButtonContainer>
     </Container>
   );
