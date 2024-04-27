@@ -20,12 +20,12 @@ const initial = [
 export const Home = () => {
   const [sudokuArr, setSudokuArr] = useState(initial);
 
-  const checkSudoku = () => {
+  const CheckSudoku = () => {
     let sudoku = getDeepCopy(initial);
     solver(sudoku);
     let compare = compareSudokus(sudokuArr, sudoku);
 
-    if (compare.isComplete) return alert("Parabéns, Você resolveu o Sudoku");
+    if (compare.isComplete) return alert("Parabéns! Você resolveu o Sudoku");
     if (compare.isSolvable) return alert("Continue tentando!");
 
     return alert("Sudoku não foi resolvido. Tente novamente");
@@ -52,9 +52,9 @@ export const Home = () => {
         initalArr={initial}
       />
       <ButtonContainer>
-        <Button onclick={checkSudoku}>Checar</Button>
-        <Button onclick={SolveSudoku}>Resolver</Button>
-        <Button onclick={ResetSudoku}>Reiniciar</Button>
+        <Button onClick={CheckSudoku}>Checar</Button>
+        <Button onClick={SolveSudoku}>Resolver</Button>
+        <Button onClick={ResetSudoku}>Reiniciar</Button>
       </ButtonContainer>
     </Container>
   );
